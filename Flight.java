@@ -19,8 +19,8 @@ public class Flight {    static Mapping mapping = new Mapping();
              String choices = """
 
                      [x]-[1] Proceed To Flight Mapping
-                     [x]-[2] One Way Branches 
-                     [x]-[3] Print Mapping |++|
+                     [x]-[2] Instruction
+                     [x]-[3] View Previous data
                      
                      """;
                for (int j=0; j<choices.length(); j++) {
@@ -31,38 +31,40 @@ public class Flight {    static Mapping mapping = new Mapping();
         System.out.print(":: ");
         i = scan.nextInt();
           if (i == 1) {
-           InstructionFlight();
+           Questions();
 	      }
           else if (i == 2) {
-           callStack();
+           InstructionFlight();
           }
-          else {}
     }
 
     private static void InstructionFlight() {
-              String Instruction = """
-                                                  Welcome To Flight Mapping
-                                                     [x] Instruction [x]
-                      [x] You can select your flight by typing the keywords that the System already provide
-                      
-                      STEP 1
-                      Flight Selection :: Type the complete word depending on your flight to avoid major problem
-                      [FOnly] - Type "FOnly" to view all the (Flights Only) [Overview] you can now start your Mapping
-                      By following the next Flight Mapping Instructions provided in the next Flight Mapping Phase
-                                          
-                      STEP 2
-                      Check Flight Availability :: Type the complete word depending on your flight to avoid major problem
-                      [Check] - Type "Check" to check the flights of a certain airline that you've already selected
-                      
-                      STEP 3
-                      Finalizing Your Flight :: Type the complete word depending on your flight to avoid major problem
-                      [good] - Type (good) if you want to make a complete flight path mapping type
-                      [bad] - Type (bad) if you want to cancel
-                                                                  
-                      """;
-               for (int i=0; i<Instruction.length(); i++) {
-                   System.out.print(Instruction.charAt(i));
-               }
+        String Instruction = """
+                                            Welcome To Flight Mapping
+                                               [x] Instruction [x]
+                [x] You can select your flight by typing the keywords that the System already provide
+                                      
+                STEP 1
+                Flight Selection :: Type the complete word depending on your flight to avoid major problem
+                [FOnly] - Type "FOnly" to view all the (Flights Only) [Overview] you can now start your Mapping
+                By following the next Flight Mapping Instructions provided in the next Flight Mapping Phase
+                                    
+                STEP 2
+                Check Flight Availability :: Type the complete word depending on your flight to avoid major problem
+                [Check] - Type "Check" to check the flights of a certain airline that you've already selected
+                                      
+                STEP 3
+                Finalizing Your Flight :: Type the complete word depending on your flight to avoid major problem
+                [good] - Type (good) if you want to make a complete flight path mapping type
+                [bad] - Type (bad) if you want to cancel
+                                                            
+                """;
+        for (int i = 0; i < Instruction.length(); i++) {
+            System.out.print(Instruction.charAt(i));
+        }
+        Questions();
+    }
+    private static void Questions() {
                System.out.print("[x]Flight: ");
                String FlightSelect = scan.next();
                System.out.print("[x]Flight-Availability: ");
@@ -71,12 +73,5 @@ public class Flight {    static Mapping mapping = new Mapping();
                String FlightCondition = scan.next();
 
                mapping.CorrespondingFlight(FlightSelect, FlightAvail, FlightCondition);
-          }
-          private static void callStack() throws InvocationTargetException, IllegalAccessException {
-            for (Method method : mapping.getClass().getDeclaredMethods()) {
-                if (method.isAnnotationPresent(isActive.class)) {
-                    method.invoke(mapping);
-                }
-            }
           }
 }
