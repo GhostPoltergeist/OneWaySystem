@@ -62,23 +62,24 @@ public class Mapping {
                             | Cebu Pacific          | Cebgo               | Philippine Airlines      | Philippine Airlines |
                             | Nonstop               | Nonstop             | Nonstop                  | 1 stop              |
                             | 1 hr 15 min           | 1 hr 5 min          | 1 hr 20 min              | 5 hr 45 min         |
-                            | php4,374          [33]| php3,467        [34]| R4,677               [35]| php5,229       [36] |                                                    
+                            | php4,374          [33]| php3,467        [34]| php4,677             [35]| php5,229       [36] |                                                    
                             |______________________________________________________________________________________________|
                                                      
                              """;
                     for (int i = 0; i < MainRegionalCharter.length(); i++) {
                         System.out.print(MainRegionalCharter.charAt(i));
                     }
-                    System.out.print("Your Destination: ");
+                    System.out.println("[note]Two Destination Numbers Only :: [no]From - [no]To");
+                    System.out.print("Destination: ");
                     int Destination = scan.nextInt();
+                    DestinationConditionals(Destination);
                 }
             }
         }
     }
-    @isActive
+    private static void DestinationConditionals(int i) {
+        int mappingFunctionality;
 
-    public void ProgrammableData() {
-        System.out.println("Database |MySQL| Data Holder");
     }
 }
 
